@@ -1,0 +1,188 @@
+/* Section Base */
+.about-us-section {
+  padding: 7rem 2rem;
+  background: linear-gradient(135deg, #fafafa, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative glowing swirl */
+.about-us-section::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(38,166,154,0.12), transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.about-us-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Image Styling */
+.about-us-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  transform: translateY(30px);
+  transition: transform 1.2s ease, opacity 1.2s ease;
+  opacity: 0;
+}
+
+.about-us-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 1.5s ease;
+}
+
+.about-us-image-wrapper:hover .about-us-image {
+  transform: scale(1.07);
+}
+
+.about-us-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0,76,69,0.25), rgba(255,255,255,0.05));
+  pointer-events: none;
+}
+
+/* Typography */
+.about-us-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #004c45;
+  position: relative;
+  display: inline-block;
+}
+
+/* Shimmer Underline */
+.about-us-shimmer {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #004c45, #26a69a, #004c45);
+  border-radius: 2px;
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.about-us-divider {
+  margin: 1.5rem 0 2rem;
+  height: 2px;
+  width: 90px;
+  background: linear-gradient(90deg, #004c45, #26a69a);
+  border-radius: 2px;
+}
+
+.about-us-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.inspired-text {
+  display: inline-block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  color: #26a69a;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.3s ease;
+}
+
+/* Reveal Animations */
+.reveal-left { transform: translateX(-60px); opacity: 0; transition: all 1.2s ease; }
+.reveal-right { transform: translateX(60px); opacity: 0; transition: all 1.2s ease; }
+
+.is-visible .reveal-left,
+.is-visible .reveal-right,
+.is-visible .about-us-text,
+.is-visible .inspired-text,
+.is-visible .about-us-image-wrapper {
+  transform: translate(0,0);
+  opacity: 1;
+}
+
+.delay-1 { transition-delay: 0.3s; }
+.delay-2 { transition-delay: 0.6s; }
+.delay-3 { transition-delay: 0.9s; }
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-us-container { flex-direction: column; text-align: center; }
+  .about-us-divider { margin: 1rem auto 2rem; }
+  .inspired-text { text-align: center; font-size: 2rem; }
+}
+
+
+/* Extra Animation Keyframes */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(60px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(-80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(80px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+  50% { transform: translateY(-10px) scale(1.02); filter: brightness(1.2); }
+}
+
+/* Apply Animations When Visible */
+.is-visible .about-us-title {
+  animation: fadeSlideRight 1.2s ease forwards;
+}
+
+.is-visible .about-us-divider {
+  animation: fadeSlideUp 1.2s ease 0.2s forwards;
+}
+
+.is-visible .about-us-text {
+  animation: fadeSlideUp 1.3s ease 0.4s forwards;
+}
+
+.is-visible .about-us-image-wrapper {
+  animation: fadeSlideLeft 1.4s ease forwards;
+}
+
+.is-visible .inspired-text {
+  animation: fadeSlideUp 1.5s ease 0.6s forwards, floatGlow 3s ease-in-out infinite 2s;
+}

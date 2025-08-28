@@ -1,0 +1,202 @@
+/* ================= HEADER ================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    padding: 1.2rem 0;
+    transition: all 0.4s ease;
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+}
+
+.header-accent {
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.header.scrolled .header-accent {
+    opacity: 1;
+}
+
+.navbar {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+}
+
+/* -------- NAV LINKS -------- */
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    transform: scale(1.07);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.header.scrolled .nav-links a {
+    color: var(--dark-color);
+}
+
+.header.scrolled .nav-links a:hover {
+    color: var(--dark-color);
+    text-shadow: none;
+}
+
+/* Underline Effect */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: -6px;
+    background: #00FF00;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    transition: width 0.4s ease, left 0.4s ease;
+    border-radius: 2px;
+}
+
+/* Hover State for Underline */
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* ---------------- MOBILE TOGGLER ---------------- */
+.menu-toggler {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.icon-bar {
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Change icon color on scroll */
+.header.scrolled .menu-toggler .icon-bar {
+    background-color: black;
+}
+
+.menu-toggler.active .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggler.active .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggler.active .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---------------- MOBILE MENU ---------------- */
+@media (max-width: 992px) {
+    .nav-links-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 0;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-links-container.open {
+        max-height: 400px;
+        padding: 1.5rem 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        color: var(--dark-color);
+    }
+
+    .menu-toggler {
+        display: block;
+    }
+
+    .menu-toggler .icon-bar {
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    .header.scrolled .menu-toggler .icon-bar {
+        background-color: #000;
+    }
+
+    .header.scrolled .menu-toggler.active .icon-bar {
+        background-color: #000;
+    }
+}
