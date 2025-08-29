@@ -29,7 +29,7 @@
         <nav class="navbar">
             <!-- Logo -->
             <div class="logo-container">
-                <img src="assets/logoPng.png" alt="Mondane Logo" class="logo" />
+                <img src="assets/logoPng.png" alt="Mondane Logo" class="logo"/>
             </div>
 
             <!-- Mobile Toggler -->
@@ -235,41 +235,60 @@
 </section>
 
 
-        <!-- Skin Quiz Section -->
-<section id="skin-quiz" class="skin-quiz">
-  <div class="quiz-container">
+
+
+
+
+<!-- Skin Quiz Section -->
+<section id="skin-quiz" class="bg-gradient-to-b from-pink-50 to-pink-100 py-16 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+    
     <!-- Logo -->
-     <div style="padding-left: 200px;">
-    <img src="./assets/logoPng.png" alt="Mondane Beauty Care" class="quiz-logo" />
-        </div>
+    <div class="quiz-logo">
+      <img src="./assets/logoPng.png" alt="Mondane Beauty Care" class="h-30 mx-auto" />
+    </div>
+
     <!-- Intro -->
-    <div class="quiz-intro">
-      <h2 class="quiz-title">Find Your Perfect Skincare Match</h2>
-      <p class="quiz-subtitle">
-        Mondane is about honest, effective beauty. Your skin is unique. 
-        Take this quick quiz to discover the products that are just right for you.
+    <div class="mb-12">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4" style="color: #43a047;">Find Your Perfect Skincare Match</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        <span class="block mb-2">Mondane is about honest, effective beauty. Your skin is unique.</span>
+        <span class="block">Take this quick quiz to discover the products that are just right for you.</span>
       </p>
     </div>
 
-    <!-- Quiz Card -->
-    <div id="quiz-card" class="quiz-card">
-      <!-- Question will be injected -->
-      <h3 id="quiz-question" class="quiz-question"></h3>
-      <div id="quiz-options" class="quiz-options"></div>
-
-      <!-- Progress -->
-      <div class="quiz-progress">
-        <div id="quiz-progress-bar" class="quiz-progress-bar"></div>
+    <!-- Quiz Layout -->
+    <div class="flex flex-col md:flex-row items-center gap-10 w-full">
+      
+      <!-- Left: Image -->
+      <div class="flex-1">
+        <img src="./assets/converted_image-removebg-preview.png" alt="Skin Quiz" class="rounded-2xl  w-500px object-cover" />
       </div>
-      <p id="quiz-progress-text" class="quiz-progress-text"></p>
-    </div>
 
-    <!-- Result Card -->
-    <div id="quiz-result" class="quiz-result hidden">
-      <div class="quiz-icon">✔️</div>
-      <h3>Your Recommendation</h3>
-      <p id="quiz-recommendation"></p>
-      <button onclick="restartQuiz()" class="quiz-btn restart">🔄 Retake Quiz</button>
+      <!-- Right: Quiz -->
+      <div class="flex-1 bg-white rounded-2xl shadow-xl p-8">
+        <!-- Quiz Card -->
+        <div id="quiz-card" class="quiz-card">
+          <h3 id="quiz-question" class="quiz-question text-xl font-semibold mb-4"></h3>
+          <div id="quiz-options" class="quiz-options grid gap-3"></div>
+
+          <!-- Progress -->
+          <div class="quiz-progress bg-gray-200 rounded-full h-2 w-full mt-6">
+            <div id="quiz-progress-bar" class="quiz-progress-bar bg-pink-500 h-2 rounded-full"></div>
+          </div>
+          <p id="quiz-progress-text" class="quiz-progress-text text-sm text-gray-500 mt-2"></p>
+        </div>
+
+        <!-- Result Card -->
+        <div id="quiz-result" class="quiz-result hidden mt-6 text-center">
+          <div class="quiz-icon text-3xl text-green-500">✔️</div>
+          <h3 class="text-xl font-semibold mt-4">Your Recommendation</h3>
+          <p id="quiz-recommendation" class="mt-2 text-gray-600"></p>
+          <button onclick="restartQuiz()" class="quiz-btn restart mt-4 bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-lg shadow-md transition">
+            🔄 Retake Quiz
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -279,7 +298,7 @@
 <section id="contact-us" class="contact-section">
   <!-- Title with Logo -->
   <div class="contact-header">
-    <div style="padding-left: 750px;">
+    <div style="padding-left: 675px;">
     <img src="./assets/logoPng.png" alt="Mondane Logo" class="contact-logo" />
     </div>
     <h2 class="contact-title">Get in Touch</h2>

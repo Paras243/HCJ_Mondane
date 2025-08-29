@@ -49,10 +49,33 @@
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
+/*.logo {
+    max-width: clamp(100px, 20vw, 150px);
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.2); /* white with 60% opacity *
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}*/
+
+
 
 .logo:hover {
     transform: scale(1.05);
 }
+
+@media (max-width: 992px) {
+    .logo {
+        max-width: 120px; /* slightly smaller on tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        max-width: 100px; /* smaller on mobile */
+    }
+}
+
 
 .nav-links-container {
     display: flex;
@@ -199,4 +222,8 @@
     .header.scrolled .menu-toggler.active .icon-bar {
         background-color: #000;
     }
+}
+
+.header.scrolled .logo {
+    background-color: rgba(255, 255, 255, 0); /* softer opacity when scrolled */
 }
